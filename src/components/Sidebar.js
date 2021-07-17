@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import {GrClose} from 'react-icons/gr'
+import { GrClose } from "react-icons/gr";
 
 export const Sidebar = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -38,7 +38,9 @@ export const Sidebar = () => {
         className="about-modal"
         overlayClassName="about-modal-overlay"
       >
-        <button className="modal-close-btn" onClick={toggleModal}><GrClose/></button>
+        <button className="modal-close-btn" onClick={toggleModal}>
+          <GrClose />
+        </button>
         <h3>About BrandColors</h3>
         <p>
           BrandColors was created by <b>DesignBombs</b>. The goal was to create
