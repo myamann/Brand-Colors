@@ -68,6 +68,17 @@ body {
   }
 }
 
+.copied{
+  position: fixed;
+  bottom:20px;
+  right: 20px;
+  background: var(--bgColor);
+  color:var(--textColor);
+  padding: 15px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 .content {
   flex: 1;
   overflow: auto;
@@ -77,8 +88,12 @@ body {
     height: 60px;
     border-bottom: 1px solid #ccc;
     display: flex;
+    justify-content: space-between;
     position: sticky;
     top:0;
+    background: #fff;
+    align-items: center;
+
     .search {
       flex: 1;
       position: relative;
@@ -103,6 +118,55 @@ body {
         padding: 0 20px 0 60px;
       }
     }
+    .download{
+      padding-right: 25px;
+      display: flex;
+      align-items: center;
+      
+      .actions{
+        display: flex;
+        margin-right: 15px;
+        a,button{
+          height: 30px;
+          width: 30px;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          svg{
+            height: 15px;
+            width: 15px;
+          }
+        }
+        select{
+          margin-right: 7px;
+          height: 30px;
+          padding:0 15px;
+          background: #eee;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+          appearance: none;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+      .selected{
+        font-size:14px;
+        font-weight: 500;
+        color:#999;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        svg{
+          display: block;
+          margin-right: 7px;
+          path{
+            stroke:#999;
+          }
+        }
+      }
+    }
   }
 
   .brands {
@@ -114,6 +178,12 @@ body {
       margin-bottom: 10px;
       &.selected {
         border-color: red;
+        .brand-colors{
+          span{
+            flex:1;
+            text-indent: 0;
+          }
+        }
       }
       h5{
         font-size: 18px;
@@ -124,7 +194,7 @@ body {
         display: flex;
         span{
           background: var(--bgColor);
-          
+          cursor: pointer;
           height: 40px;
           display: flex;
           align-items: center;
