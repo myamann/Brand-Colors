@@ -1,6 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react'
 import MainContext from './../MainContext';
 import {GrLink, GrDownload,GrClose} from 'react-icons/gr'
+import {Link} from 'react-router-dom'
 
 export const Download = () => {
     const {selectedBrands,brands,setSelectedBrands} = useContext(MainContext)
@@ -58,9 +59,7 @@ export const Download = () => {
         }
     }, [selectedBrands,cssMethod])
 
-    const getLink = () => {
-        prompt("Here's the URL to share",`http://localhost:3000/collection/${selectedBrands.join(',')}`)
-    }
+    
 
     return (
         <div className="download">
@@ -74,9 +73,9 @@ export const Download = () => {
                     <GrDownload/>
                 </a>
                 
-                <button onClick={getLink}>
+                <Link to={`/collection${selectedBrands.join(',')}`}>
                     <GrLink/>
-                </button>
+                </Link>
             </div>
             <div className="selected" onClick={()=>setSelectedBrands([])}>
             <button><GrClose/></button>

@@ -4,7 +4,15 @@ import MainContext from "./MainContext";
 import { Sidebar } from "./components/Sidebar";
 import { Content } from "./components/Content";
 import { Copied } from "./components/Copied";
+import { Collection } from "./components/Collection";
 import BrandsData from "./brands.json";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+import LazyLoad ,{forceCheck} from "react-lazyload";
 
 function App() {
   const brandsArray = [];
@@ -31,6 +39,10 @@ function App() {
     setBrands(brandsArray.filter(brand=>brand.title.toLowerCase().includes(search)))
   }, [search])
 
+  useEffect(() => {
+   forceCheck();
+  }, [brands])
+
 
   const data = {
     brands,
@@ -43,9 +55,19 @@ function App() {
   return (
     <>
       <MainContext.Provider value={data}>
+      {copied && <Copied color={copied}/>}
         <Sidebar />
-        <Content />
-        {copied && <Copied color={copied}/>}
+       <Router>
+         <Switch>
+           <Route path="/" exact>
+             <Content />
+           </Route>
+           <Route path="/collection:slugs">
+              <Collection/>
+           </Route>
+         </Switch>
+       </Router>
+        
       </MainContext.Provider>
     </>
   );
